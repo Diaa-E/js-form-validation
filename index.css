@@ -1,0 +1,22 @@
+*{
+    font-family: sans-serif;
+}
+
+input:invalid{
+    background-color: pink;
+}
+
+input:valid{
+    background-color: aquamarine;
+}
+
+form{
+    border: 2px black solid;
+    padding: 10px;
+    margin: 10px;
+}
+
+legend{
+    font-size: 24px;
+    font-weight: bold;
+}
