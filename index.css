@@ -2,11 +2,11 @@
     font-family: sans-serif;
 }
 
-input:invalid{
+#form2 input:invalid, #form1 input:invalid{
     background-color: pink;
 }
 
-input:valid{
+#form2 input:valid, #form1 input:valid{
     background-color: aquamarine;
 }
 
@@ -19,4 +19,12 @@ form{
 legend{
     font-size: 24px;
     font-weight: bold;
+}
+
+.invalid{
+    background-color: pink;
+}
+
+.valid{
+    background-color: aquamarine;
 }

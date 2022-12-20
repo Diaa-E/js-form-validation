@@ -2,6 +2,7 @@
 
 validate1();
 validate2();
+validate3();
 
 function validate1()
 {
@@ -67,4 +68,64 @@ function validate2()
             ; you entered ${txtEmail.value.length}.`
         }
     }
+}
+
+function validate3()
+{
+    const form = document.querySelector("#form3");
+    const txtEmail = document.querySelector("#mail3");
+    const spanError = txtEmail.nextElementSibling;
+
+    const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    window.addEventListener("load", () => {
+
+        const isValid = txtEmail.value.length === 0 || emailPattern.test(txtEmail.value);
+        txtEmail.className = isValid ? "valid" : "invalid";
+    });
+
+    txtEmail.addEventListener("input", () => {
+
+        const isValid = txtEmail.value.length === 0 || emailPattern.test(txtEmail.value);
+
+        if (isValid)
+        {
+            txtEmail.className = "valid";
+            spanError.textContent = "";
+        }
+        else
+        {
+            txtEmail.className = "invalid";
+        }
+    });
+
+    form.addEventListener("submit", (e) => {
+
+        const isShort = txtEmail.value.length < 8;
+        const isEmpty = txtEmail.value.length === 0;
+        const isMismatch = !emailPattern.test(txtEmail.value);
+
+        if (isShort)
+        {
+            e.preventDefault();
+            txtEmail.className = "invalid";
+            spanError.textContent = `Email is too short, you need at least 8 Characters, you entered ${txtEmail.value.length}`;
+        }
+        else if (isEmpty)
+        {
+            e.preventDefault();
+            txtEmail.className = "invalid";
+            spanError.textContent = "You need to enter an Email Address";
+        }
+        else if (isMismatch)
+        {
+            e.preventDefault();
+            txtEmail.className = "invalid";
+            spanError.textContent = "The email you entered is invalid";
+        }
+        else
+        {
+            txtEmail.className = "valid";
+        }
+    });
 }
